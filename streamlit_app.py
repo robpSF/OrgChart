@@ -54,7 +54,7 @@ if uploaded_file:
       "physics": {
         "enabled": true,
         "stabilization": {
-          "iterations": 200
+          "iterations": 50
         }
       }
     }
@@ -95,7 +95,7 @@ if uploaded_file:
         f.write(patched_html)
 
     # -- 5) Embed the final HTML in Streamlit --
-    components.html(patched_html, height=800, scrolling=True)
+    components.html(patched_html, height=800, wdith=1000, scrolling=True)
 
     # Display the DataFrame
     st.write("Data Preview:")

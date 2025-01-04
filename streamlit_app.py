@@ -3,20 +3,21 @@ import pandas as pd
 from pyvis.network import Network
 import streamlit.components.v1 as components
 
-st.title("Org Chart with Physics Control Panel (No Auto-Disable)")
+st.title("Org Chart with Photos and Physics Control Panel")
 
 uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx", "xls"])
 if uploaded_file:
+    # Read Excel into a DataFrame
     df = pd.read_excel(uploaded_file)
 
-    # Ensure we have required columns
+    # Check minimal required columns
     required_cols = {"Handle", "Name", "ReportsTo", "Image"}
     missing_cols = required_cols - set(df.columns)
     if missing_cols:
-        st.error(f"Missing columns: {missing_cols}")
+        st.error(f"Your Excel file is missing the following columns: {missing_cols}")
         st.stop()
 
-    # Create the PyVis network
+    # Create a directed network
     net = Network(
         height="750px",
         width="100%",
@@ -25,27 +26,17 @@ if uploaded_file:
         font_color="black"
     )
 
-    # Show the built-in physics controls so the user can see/toggle them
+    # Show the "Physics" control panel in the top-left corner
     net.show_buttons(filter_=['physics'])
 
-    # Enable physics (with some stabilization) via valid JSON
-    net.set_options('''
-    {
-      "physics": {
-        "enabled": true,
-        "stabilization": {
-          "iterations": 200
-        }
-      }
-    }
-    ''')
-
-    # Add nodes
+    # Add nodes (each person's info)
     for _, row in df.iterrows():
-        handle = str(row["Handle"])
-        name   = str(row["Name"])
-        image  = str(row["Image"])
-        label  = f"{name}\n({handle})"
+        handle = row["Handle"]
+        name = row["Name"]
+        image = row["Image"]  # URL or local path
+
+        # Label could be the person's name, handle, or both
+        label = f"{name}\n({handle})"
 
         net.add_node(
             n_id=handle,
@@ -55,21 +46,22 @@ if uploaded_file:
             size=50
         )
 
-    # Add edges
+    # Add edges (manager -> person)
     for _, row in df.iterrows():
-        handle = str(row["Handle"])
+        handle = row["Handle"]
         reports_to = row["ReportsTo"]
-        if pd.notna(reports_to) and str(reports_to).strip():
-            net.add_edge(source=str(reports_to), to=handle)
+        if pd.notna(reports_to) and reports_to.strip():
+            net.add_edge(source=reports_to, to=handle)
 
-    # Save and load the generated HTML
+    # Generate the interactive chart (HTML)
     net.save_graph("orgchart.html")
+
+    # Read that HTML and embed in Streamlit
     with open("orgchart.html", "r", encoding="utf-8") as f:
         html_content = f.read()
 
-    # Embed in Streamlit
     components.html(html_content, height=800, scrolling=True)
 
-    # Optional: Display DataFrame
+    # Display the DataFrame preview
     st.write("Data Preview:")
     st.dataframe(df)

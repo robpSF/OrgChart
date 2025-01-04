@@ -69,7 +69,7 @@ if uploaded_file:
         elif "sock puppet" in tag_list:
             border_color = "#FF0000"  # Red
         else:
-            border_color = "#0"  # White default
+            border_color = "#000000"  # White default
 
         # Create the color dictionary
         color_dict = {

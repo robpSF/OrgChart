@@ -11,7 +11,7 @@ if uploaded_file:
     df = pd.read_excel(uploaded_file)
 
     # Check minimal required columns
-    required_cols = {"Handle", "Name", "ReportsTo", "Image"}
+    required_cols = {"Handle", "Name", "ReportsTo", "Image", "Tags"}
     missing_cols = required_cols - set(df.columns)
     if missing_cols:
         st.error(f"Your Excel file is missing the following columns: {missing_cols}")

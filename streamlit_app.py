@@ -27,7 +27,7 @@ if uploaded_file:
     )
 
     # Show the "Physics" control panel in the top-left corner
-    #net.show_buttons(filter_=['physics'])
+    
     net.set_options('''
     {
       "physics": {
@@ -50,7 +50,8 @@ if uploaded_file:
       }
     }
     ''')
-
+    net.show_buttons(filter_=['physics'])
+    
     # Add nodes (each person's info)
     for _, row in df.iterrows():
         handle = row["Handle"]

@@ -62,6 +62,7 @@ if uploaded_file:
         # Get tags and split by comma (or however your tags are separated)
         tag_list = [t.strip().lower() for t in str(row["Tags"]).split(",")]
 
+        st.write(tag_list)
         # Decide border color based on tags
         if "amplifier" in tag_list:
             border_color = "#0000FF"  # Blue

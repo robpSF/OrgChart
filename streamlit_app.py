@@ -62,7 +62,7 @@ if uploaded_file:
         # Get tags and split by comma (or however your tags are separated)
         tag_list = [t.strip().lower() for t in str(row["Tags"]).split(",")]
 
-        st.write(tag_list)
+        #st.write(tag_list)
         # Decide border color based on tags
         if "amplifier" in tag_list:
             border_color = "#0000FF"  # Blue
@@ -91,7 +91,7 @@ if uploaded_file:
             shape="image",
             image=image_url,
             color=color_dict,
-            borderWidth=3  # For a noticeable border
+            borderWidth=12  # For a noticeable border
         )
 
     # Add edges (manager -> person)

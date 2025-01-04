@@ -54,19 +54,43 @@ if uploaded_file:
     
     # Add nodes (each person's info)
     for _, row in df.iterrows():
-        handle = row["Handle"]
-        name = row["Name"]
-        image = row["Image"]  # URL or local path
-
-        # Label could be the person's name, handle, or both
+        handle = str(row["Handle"])
+        name = str(row["Name"])
+        image_url = str(row["Image"])
         label = f"{name}\n({handle})"
+
+        # Get tags and split by comma (or however your tags are separated)
+        tag_list = [t.strip().lower() for t in str(row["Tags"]).split(",")]
+
+        # Decide border color based on tags
+        if "amplifier" in tag_list:
+            border_color = "#0000FF"  # Blue
+        elif "sock puppet" in tag_list:
+            border_color = "#FF0000"  # Red
+        else:
+            border_color = "#888888"  # Gray default
+
+        # Create the color dictionary
+        color_dict = {
+            "border": border_color,
+            "background": "#FFFFFF",  # or transparent, but typically a color is needed
+            "highlight": {
+                "border": border_color,
+                "background": "#EFEFEF"
+            },
+            "hover": {
+                "border": border_color,
+                "background": "#E0E0E0"
+            }
+        }
 
         net.add_node(
             n_id=handle,
             label=label,
             shape="image",
-            image=image,
-            size=50
+            image=image_url,
+            color=color_dict,
+            borderWidth=3  # For a noticeable border
         )
 
     # Add edges (manager -> person)

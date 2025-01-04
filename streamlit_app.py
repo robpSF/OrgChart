@@ -60,7 +60,7 @@ if uploaded_file:
     with open("orgchart.html", "r", encoding="utf-8") as f:
         html_content = f.read()
 
-    components.html(html_content, height=800, scrolling=True)
+    components.html(html_content, height=800, width=1200, scrolling=True)
 
     # Display the DataFrame preview
     st.write("Data Preview:")

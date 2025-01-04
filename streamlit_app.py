@@ -102,7 +102,7 @@ if uploaded_file:
         handle = row["Handle"]
         reports_to = row["ReportsTo"]
         if pd.notna(reports_to) and reports_to.strip():
-            net.add_edge(source=reports_to, to=handle, color='#666666')
+            net.add_edge(source=reports_to, to=handle, color='#646cde')
 
     # Generate the interactive chart (HTML)
     net.save_graph("orgchart.html")

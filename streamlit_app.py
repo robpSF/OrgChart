@@ -47,7 +47,6 @@ if uploaded_file:
         "maxVelocity": 50,
         "minVelocity": 0.75,
         "timestep": 0.28
-        // "wind": { "x": 0, "y": 0 }  <-- only if your Vis.js version supports "wind"
       }
     }
     ''')

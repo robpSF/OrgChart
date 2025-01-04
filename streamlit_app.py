@@ -31,21 +31,21 @@ def main():
         # 4) (Optional) Show layout/physics buttons so users can experiment
         # net.show_buttons(filter_=['layout', 'physics'])
 
-        # 5) Set hierarchical layout options (top-to-bottom)
+        # 5) Set hierarchical layout options (top-to-bottom) in valid JSON
         net.set_options("""
-        var options = {
-          layout: {
-            hierarchical: {
-              enabled: true,
-              levelSeparation: 150,
-              nodeSpacing: 100,
-              treeSpacing: 200,
-              direction: 'UD',    // 'UD' = top to bottom
-              sortMethod: 'directed'
+        {
+          "layout": {
+            "hierarchical": {
+              "enabled": true,
+              "levelSeparation": 150,
+              "nodeSpacing": 100,
+              "treeSpacing": 200,
+              "direction": "UD",
+              "sortMethod": "directed"
             }
           },
-          physics: {
-            enabled: false
+          "physics": {
+            "enabled": false
           }
         }
         """)

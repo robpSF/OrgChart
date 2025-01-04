@@ -17,8 +17,8 @@ if uploaded_file:
     for _, row in df.iterrows():
         # We'll use the Handle as the node identifier
         handle = row["Handle"]
-        # We can store other attributes in the node if needed (like Title, Name, etc.)
-        G.add_node(handle, name=row["Name"], title=row["Title"])
+        # We only store the Name attribute now (no Title)
+        G.add_node(handle, name=row["Name"])
     
     # Step 4: Add edges (manager -> report)
     for _, row in df.iterrows():
@@ -29,8 +29,6 @@ if uploaded_file:
             G.add_edge(reports_to, handle)
     
     # Step 5: Draw the org chart using networkx
-    # (Note: "spring_layout" might not look exactly like a classic org chart, 
-    #  but is a quick way to visualize)
     pos = nx.spring_layout(G, k=1, seed=42)
     fig, ax = plt.subplots(figsize=(10, 8))
     

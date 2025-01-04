@@ -69,7 +69,7 @@ if uploaded_file:
         elif "sock puppet" in tag_list:
             border_color = "#FF0000"  # Red
         else:
-            border_color = "#888888"  # Gray default
+            border_color = "#0"  # White default
 
         # Create the color dictionary
         color_dict = {
@@ -91,7 +91,7 @@ if uploaded_file:
             shape="image",
             image=image_url,
             color=color_dict,
-            borderWidth=12,  # For a noticeable border
+            borderWidth=3,  # For a noticeable border
             shapeProperties={
             "useBorderWithImage": True  # <- Crucial to show the border for an image shape
             }

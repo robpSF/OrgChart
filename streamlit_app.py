@@ -30,6 +30,12 @@ if uploaded_file:
     
     net.set_options('''
     {
+      "edges": {
+        "color": {
+          "inherit": false
+        }
+      },
+    {
       "configure": {
         "enabled": true,
         "filter": ["physics"]

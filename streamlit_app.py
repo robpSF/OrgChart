@@ -28,6 +28,28 @@ if uploaded_file:
 
     # Show the "Physics" control panel in the top-left corner
     net.show_buttons(filter_=['physics'])
+        net.set_options('''
+    {
+      "physics": {
+        "enabled": true,
+        "solver": "repulsion",
+        "repulsion": {
+          "centralGravity": 0,
+          "springLength": 240,
+          "springConstant": 0.42,
+          "nodeDistance": 225,
+          "damping": 1
+        },
+        "maxVelocity": 50,
+        "minVelocity": 0.75,
+        "timestep": 0.28,
+        "wind": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+    ''')
 
     # Add nodes (each person's info)
     for _, row in df.iterrows():

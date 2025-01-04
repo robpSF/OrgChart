@@ -30,6 +30,11 @@ if uploaded_file:
     
     net.set_options('''
     {
+      "configure": {
+        "enabled": true,
+        "filter": ["physics"]
+      },
+    {
       "physics": {
         "enabled": true,
         "solver": "repulsion",
@@ -51,7 +56,6 @@ if uploaded_file:
     }
     ''')
     
-    net.show_buttons()
     
     # Add nodes (each person's info)
     for _, row in df.iterrows():

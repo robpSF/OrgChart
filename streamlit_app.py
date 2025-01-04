@@ -27,7 +27,7 @@ if uploaded_file:
     )
 
     # Show the "Physics" control panel in the top-left corner
-    net.show_buttons(filter_=['physics'])
+    #net.show_buttons(filter_=['physics'])
     net.set_options('''
     {
       "physics": {

@@ -34,7 +34,6 @@ if uploaded_file:
         "enabled": true,
         "filter": ["physics"]
       },
-    {
       "physics": {
         "enabled": true,
         "solver": "repulsion",
@@ -47,11 +46,8 @@ if uploaded_file:
         },
         "maxVelocity": 50,
         "minVelocity": 0.75,
-        "timestep": 0.28,
-        "stabilization": {
-          "enabled": true,
-          "iterations": 200
-        }
+        "timestep": 0.28
+        // "wind": { "x": 0, "y": 0 }  <-- only if your Vis.js version supports "wind"
       }
     }
     ''')

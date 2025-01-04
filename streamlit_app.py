@@ -60,7 +60,7 @@ if uploaded_file:
       "physics": {
         "enabled": true,
         "stabilization": {
-          "iterations": 20
+          "iterations": 200
         }
       }
     }
@@ -99,7 +99,7 @@ if uploaded_file:
 
     # 8) Display the patched HTML in Streamlit
     #    (Optionally, you could write patched_html to "orgchart.html" first.)
-    components.html(patched_html, height=800, width=1200, scrolling=True)
+    components.html(patched_html, height=800, scrolling=True)
 
     # 9) Show the DataFrame preview
     st.write("Data Preview:")

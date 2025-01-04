@@ -91,7 +91,10 @@ if uploaded_file:
             shape="image",
             image=image_url,
             color=color_dict,
-            borderWidth=12  # For a noticeable border
+            borderWidth=12,  # For a noticeable border
+            shapeProperties={
+            "useBorderWithImage": True  # <- Crucial to show the border for an image shape
+            }
         )
 
     # Add edges (manager -> person)

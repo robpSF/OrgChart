@@ -50,7 +50,8 @@ if uploaded_file:
       }
     }
     ''')
-    net.show_buttons(filter_=['physics'])
+    
+    net.show_buttons()
     
     # Add nodes (each person's info)
     for _, row in df.iterrows():
